@@ -80,7 +80,7 @@ class AttributesUtils
             return [];
         }
 
-        if(!count($attributes)) {
+        if( !count($attributes)) {
             $cursor->restoreState($state);
 
             return [];

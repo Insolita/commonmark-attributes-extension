@@ -26,7 +26,7 @@ class AttributesInlineParser extends AbstractInlineParser
     public function parse(InlineParserContext $inlineContext)
     {
         $cursor = $inlineContext->getCursor();
-        if ($cursor->getNextNonSpaceCharacter() !== '{') {
+        if ('{' !== $cursor->getNextNonSpaceCharacter()) {
             return false;
         }
 
