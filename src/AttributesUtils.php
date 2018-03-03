@@ -50,11 +50,13 @@ class AttributesUtils
         while ($attribute = trim($cursor->match(self::$regexp))) {
             if ('#' === $attribute[0]) {
                 $attributes['id'] = substr($attribute, 1);
+
                 continue;
             }
 
             if ('.' === $attribute[0]) {
                 $attributes['class'][] = substr($attribute, 1);
+
                 continue;
             }
 
@@ -80,7 +82,7 @@ class AttributesUtils
             return [];
         }
 
-        if( !count($attributes)) {
+        if (!count($attributes)) {
             $cursor->restoreState($state);
 
             return [];

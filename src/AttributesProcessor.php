@@ -71,18 +71,21 @@ class AttributesProcessor implements DocumentProcessorInterface
             if (null === $previous && null === $next) {
                 $target = $node->parent();
                 $direction = self::DIRECTION_SUFFIX;
+
                 break;
             }
 
             if (null !== $previous && !$previous instanceof Attributes) {
                 $target = $previous;
                 $direction = self::DIRECTION_SUFFIX;
+
                 break;
             }
 
             if (null !== $next && !$next instanceof Attributes) {
                 $target = $next;
                 $direction = self::DIRECTION_PREFIX;
+
                 break;
             }
         }
