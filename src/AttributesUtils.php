@@ -34,7 +34,7 @@ class AttributesUtils
         }
 
         $state = $cursor->saveState();
-        $cursor->advanceToFirstNonSpace();
+        $cursor->advanceToNextNonSpaceOrNewline();
         if ('{' !== $cursor->getCharacter()) {
             $cursor->restoreState($state);
 
@@ -74,7 +74,13 @@ class AttributesUtils
             }
         }
 
-        if (0 === $cursor->advanceWhileMatches('}')) {
+        if (null === $cursor->match('/}/')) {
+            $cursor->restoreState($state);
+
+            return [];
+        }
+
+        if(!count($attributes)) {
             $cursor->restoreState($state);
 
             return [];
